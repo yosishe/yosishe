@@ -1,50 +1,53 @@
-## AI engineering · agent systems · Hebrew/RTL tooling
+## Yosi Shemer — agent systems that have to be right, not just fluent
 
-I build agent systems that have to be *right*, not just fluent — and I'm drawn to the part
-most demos skip: what the thing actually costs, what it silently breaks, and how you would
-know either way.
+[LinkedIn](https://www.linkedin.com/in/yossi--shemer) · Israel · Hebrew and English · open to AI / agent-engineering roles
 
-### What I work on
+I build pipelines where the model is allowed to write and the code decides what survives:
+every quote located in its source, every number labeled `[measured]` or `[estimated]`, every
+gate a test that can fail. The interesting part of an agent system is not the demo; it is what
+the thing costs, what it silently breaks, and how you would know either way.
 
-**Agent & skill engineering.** Multi-agent workflows, skill and prompt design, and the
-measurement layer around them — cost per trigger, context a model can never reach, and
-honest labels on every number.
+**Currently:** volunteer AI research advisor to a rare-disease literature effort (CCHS /
+*PHOX2B*), and shipping the video-to-brief tools below.
 
-**Biomedical evidence tagging.** Volunteer AI research advisor to a rare-disease research
-effort (CCHS / *PHOX2B*): controlled-vocabulary tagging, ontology anchoring to MeSH/MONDO,
-and grounding-enforced extraction built on one rule — *the LLM extracts, deterministic code
-decides.* Same corpus, same tags, byte-identical output across runs and across models.
+**How I work:** verification first, honest measurement, small real commits. Claude Code and
+OpenAI Codex co-author much of this work and are credited in the commit trailers; the design
+decisions, the gates, and the numbers are mine to defend.
 
-**Hebrew / RTL document pipelines.** Bidi-correct PDF, DOCX and PPTX generation. A narrow
-niche that is genuinely hard and very often done badly.
+### Pinned, in reading order
 
-### Selected work
+1. **[talkbrief](https://github.com/yosishe/talkbrief)** — a YouTube talk becomes a
+   slide-by-slide brief, and every quote is **mechanically verified** against the transcript
+   before you see it. The model never writes a timestamp; code locates each quote (digit-exact)
+   and stamps the second. One real-model run on a 60-minute talk: 351/354 quotes grounded, the
+   3 misses flagged in amber, none dropped `[measured]`. 55 offline tests in CI. Hebrew/RTL
+   output. MIT.
+2. **[token-efficient-skill-optimizer](https://github.com/yosishe/token-efficient-skill-optimizer)**
+   — audits AI skills and system prompts for what they actually cost per trigger, under a hard
+   rule: no task-success loss, no safety weakening. It can tell you *not* to optimize, and did:
+   a pilot that came back at −0.7% was published at −0.7%. 27 rules over 42 machine-checked
+   sources; a `[measured]` claim with no data file behind it fails CI. MIT.
+3. **[cchs-tagging-method](https://github.com/yosishe/cchs-tagging-method)** — the case study
+   behind the CCHS work. *The LLM extracts, the code decides*: controlled vocabularies, MeSH/GO
+   anchoring, and a quote gate that found 195/195 pilot quotes verbatim in their source PDFs
+   `[measured]`. Method and numbers only; the data belongs to the research collaboration.
+4. **[visual-video-summarizer](https://github.com/yosishe/visual-video-summarizer)** — a
+   Claude Code skill that turns a video into an illustrated HTML page, Hebrew (RTL) by default.
+   Frames are chosen by candidate ID and pixel-verified on re-grab; the engine is scored on a
+   committed benchmark, not eyeballed. MIT.
+5. **[neuroflow](https://github.com/yosishe/neuroflow)** — a Hebrew RTL daily-planning web app
+   (React, TypeScript, Vite). The one product here that is not a pipeline: 120 unit tests and a
+   production build in CI `[measured]`, bidi-correct layout, guest mode with optional Supabase sync.
 
-**[talkbrief](https://github.com/yosishe/talkbrief)** — turns a YouTube talk into a
-grounded, slide-by-slide brief. Deterministic slide extraction, transcript alignment,
-Claude-written notes — and then every quote is **mechanically verified** against the
-transcript before you see it (a real-model run came back 351/354 grounded, and the 3
-misses are flagged in amber, never dropped). Bidi-correct Hebrew/RTL output, offline-first,
-no API key — it rides the Claude Code CLI. MIT.
+### Elsewhere
 
-**[token-efficient-skill-optimizer](https://github.com/yosishe/token-efficient-skill-optimizer)**
-— audits AI skills, system prompts, and agent instruction sets for what they actually cost
-per trigger, under a hard constraint: no task-success loss, no safety weakening.
-
-The design choice I care about most is that it can tell you *not* to optimize. Several rules
-exist only to stop an edit — keep the repetition that looks redundant but is load-bearing,
-keep the verbose instruction carrying a safety obligation. "Already efficient" is a
-successful outcome, and the pilot that came back at −0.7% was published at −0.7%.
-
-Every number carries an enforced label — `[measured]`, `[estimated]`, `[projected]` — and a
-`[measured]` claim with no pointer to its data file fails the build, including in the
-project's own reports. 27 rules over 42 sources, each citation machine-checked against its
-primary page. MIT.
+- [skills-il/developer-tools#27](https://github.com/skills-il/developer-tools/pull/27) — the
+  skill optimizer submitted to the Israeli developer-skills catalog, with the negative-trigger
+  cases its checklist asked for.
+- Hebrew / RTL document generation (PDF, DOCX, PPTX with correct bidi) runs through most of the
+  work above; it is a narrow niche that is genuinely hard and very often done badly.
 
 ### Background
 
-Computer Science graduate · data science certificate · based in Israel · Hebrew and English.
-[LinkedIn](https://www.linkedin.com/in/yossi--shemer)
-
-Most of what I build is applied and client- or research-facing, so a fair amount of it lives
-outside this profile. Happy to walk through any of it.
+Computer Science graduate · data science certificate · based in Israel. Most client- and
+research-facing work lives outside this profile; happy to walk through any of it.

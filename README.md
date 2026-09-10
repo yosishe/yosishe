@@ -19,14 +19,6 @@ decides.* Same corpus, same tags, byte-identical output across runs and across m
 niche that is genuinely hard and very often done badly.
 
 ### Selected work
-
-**[talkbrief](https://github.com/yosishe/talkbrief)** — turns a YouTube talk into a
-grounded, slide-by-slide brief. Deterministic slide extraction, transcript alignment,
-Claude-written notes — and then every quote is **mechanically verified** against the
-transcript before you see it (a real-model run came back 351/354 grounded, and the 3
-misses are flagged in amber, never dropped). Bidi-correct Hebrew/RTL output, offline-first,
-no API key — it rides the Claude Code CLI. MIT.
-
 **[token-efficient-skill-optimizer](https://github.com/yosishe/token-efficient-skill-optimizer)**
 — audits AI skills, system prompts, and agent instruction sets for what they actually cost
 per trigger, under a hard constraint: no task-success loss, no safety weakening.

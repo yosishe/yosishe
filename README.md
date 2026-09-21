@@ -30,13 +30,23 @@ successful outcome, and the pilot that came back at −0.7% was published at −
 
 Every number carries an enforced label — `[measured]`, `[estimated]`, `[projected]` — and a
 `[measured]` claim with no pointer to its data file fails the build, including in the
-project's own reports. 27 rules over 42 sources, each citation machine-checked against its
-primary page. MIT.
+project's own reports. 38 rules over 73 sources, each citation machine-checked, and the documentation's
+own totals regenerated from the registry in CI so they cannot drift. MIT.
+
+**[visual-video-summarizer](https://github.com/yosishe/visual-video-summarizer)** — turns a
+lecture or demo into source-linked study notes with timestamped frames, in Hebrew or English.
+A deterministic controller owns the pipeline: it names which artifact to write next and refuses
+to advance past one that is missing, empty, invalid or stale, so a half-finished run fails
+loudly instead of rendering a confident, wrong summary. Cloud transcription is never implicit —
+it requires an explicit flag. 407 tests on a Linux/macOS/Windows CI matrix. MIT.
+
+**[talkbrief](https://github.com/yosishe/talkbrief)** — a slide-by-slide brief of a talk where
+every quote is mechanically checked back against the transcript before it can appear. RTL-correct
+Hebrew output. 55 tests, CI, typed. MIT.
 
 ### Background
 
-Computer Science graduate · data science certificate · based in Israel · Hebrew and English.
-[LinkedIn](https://www.linkedin.com/in/yossi--shemer)
+Based in Israel · Hebrew and English · [LinkedIn](https://www.linkedin.com/in/yossi--shemer)
 
 Most of what I build is applied and client- or research-facing, so a fair amount of it lives
 outside this profile. Happy to walk through any of it.
